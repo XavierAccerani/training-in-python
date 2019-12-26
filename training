@@ -1,0 +1,1009 @@
+#c = 0
+
+   # f = (c*(9/5))+32
+
+#print("une temperature de, ",c," degrés Celcius, équivaut a, ",f, " degrés farhenheit.")
+
+
+
+#   2.2 Votre age en secondes
+
+secan = 365*24*3600
+secm = secan/12
+secj = 24*3600
+
+def nbsec(jour,mois,annee):
+    nban = annee - 1900     #on determine le nombre d'années ecoulés pareil pour les mois et les jours 
+    nbm = mois - 1 #pour cela on soustrait a la date indiquée dans la fonction la date de référence
+    nbj = jour - 1
+    result = nban * secan + nbm*secm + nbj*secj #on multiplie par le nombre de secondes de chacun et on additionne le tout pour avoir une durée depuis la date de ref ici 1/1/1900
+    return result
+
+secauji = nbsec(21,12,2019)
+secnaiss = nbsec(30,9,1993)
+
+agesec = secauji - secnaiss
+
+
+
+        # Question 3:
+ref_an  =    1900   #on définie ici la date de reference dans 3 variables qui contiennent l'année le mois et le jour 
+ref_mois =  1
+ref_jour = 1
+
+
+        #Question 4:
+nbre_sec_jour = 24 * 60 * 60  #on determine le nombre de secondes dans une journée  que l'on attribue a une variable
+
+
+        #Question 5:   #on determine le nbre de secondes dans une année approximativement en mulipliant le nbre de sec dans un jour par le nombre de jour moyen par an
+nbre_sec_an = nbre_sec_jour * 365.2425
+
+
+        #Question 6:  # on determine le nomvbre de secondes dans un mois approximatif en divisant le nombre de secondes d'une année par 12
+nbre_sec_mois = nbre_sec_an / 12
+
+        #Question 7: # on fixe la date d'aujourd'hui en creant 3 variables qui contiennent respectivement le mois, l'année et le jour d'aujourd'hui
+aujourdhui_an = 2019
+aujourdhui_mois = 12
+aujourdhui_jour = 21
+
+        #Question8: on calcule le nombre moyen de seconde entre entre aujourd'hui et la date de reference en soustrayant les valeurs des variables de date et en multipliant le resultat par les variable de nbre de sec
+nbre_sec = (aujourdhui_an - ref_an) * nbre_sec_an + (aujourdhui_mois - ref_mois) * nbre_sec_mois + (aujourdhui_jour - ref_jour) * nbre_sec_jour  
+
+
+        #Question 9: on determine le nb de cecondes entre date de reference et date de notre anniv en créant 3 variables auxquelles on attribue l'annee le mois et le jour de do notre anniv
+anniv_jour = 30
+anniv_mois = 9
+anniv_an = 1993
+
+        #ensuite on soustrait a la date d'anniv la date de referencepour obtenir le nombre d'année de mois et de jour qui les separe apres quoi on multiplie chaque unité par le nombre de secondes qui la compose et enfin on additionne le tout pour obtenir la dure en secondes entre les 2
+nbre_sec_anniv = (anniv_an - ref_an) * nbre_sec_an + (anniv_mois - ref_mois) * nbre_sec_mois + (anniv_jour - ref_jour) * nbre_sec_jour
+
+
+
+
+        #Question 10:  # on calcule notre age en seconde en soustrayant au nobre de secondes ecoulé jusque aujourd'hui le nombre de seconde écoulé jusque notre date d'anniv ce qui nous laisse le nombre de secondes ecoulé depuis notre date d'anniversaire jusque aujourd'hui donc notre age en secondes
+
+age_en_secondes = nbre_sec - nbre_sec_anniv
+#print(age_en_secondes)
+
+
+
+
+
+        #Question 11: on definit une fonction avec un parametre qui est la temperature en celcius su laquelle on applique la formule et on retourne la temperature en farenheit
+
+def ctof(c):
+    c = float(c)
+    f = (c*(9/5))+32
+    return f
+
+#print(ctof(35))
+
+
+
+
+         #Question 12: on definit une fonction avec un parametre qui est une temperature en farenheit sur laquelle on applique la formule et on retourne le resultat qui est donc la température en celcius   
+
+def ftoc(f):
+    f = float(f)
+    c = (f-32) / (9/5)
+    return c
+
+#print(ftoc(95))
+
+
+
+
+
+
+
+
+
+        #question 13 : on cherche si les 2 fonctions sont reciproques une de l'autre donc on teste plusieurs valeurs aleatoire grace a randint , on le fait plusieurs fois grace a une boucle et on verifie que le resultat de l'une correspond au parametre a entre dans l'autre fonction pour obtenir le parametre e la premiere
+#randint 
+#compteur et while  
+# if  alors compteur + 1 
+# if compteur de bonne reponse == nb d'itération 
+#  return true
+
+
+
+
+def tstfct(nbessais):
+    from random import randint
+
+    cpt = 0
+    essaisreussis= 0
+    result = False
+
+    while cpt < nbessais:
+        c = randint(0,50) 
+        f = ctof(c)
+        c2 = ftoc(f)
+        c2 = round(c2)
+        
+        if c == c2:
+            essaisreussis +=1
+
+        cpt += 1
+        
+        
+        
+        print(c,c2,'\n',essaisreussis, nbessais,"\n\n")
+        
+
+
+    if essaisreussis == nbessais:
+        result = True
+    return result
+
+#print(tstfct(100))
+
+
+
+
+
+        #question 14 on veut la durée en seconde entre 2 dates en parametre d'un fonction, on cree une fonction qui prend 6 parametres
+
+# fct a 6 parametres a1 m1 j1 a2 m2 j2 
+# les 2 moins les 1 et mulitiplie par le nb de sec de chque unité  
+# on additionne les résutats 
+#on retourne le result 
+
+
+def dureesec(a1,m1,j1,a2,m2,j2):
+    a1,m1,j1,a2,m2,j2 = int(a1),int(m1),int(j1),int(a2),int(m2),int(j2)
+
+    an = a2 - a1
+    mois = m2 - m1
+    jour = j2 - j1
+
+    an = an * secan
+    mois = mois * secm
+    jour = jour * secj
+
+    result = an + mois + jour
+
+    return result
+
+#print(dureesec(2019,12,23,2019,12,24))
+
+
+
+
+
+
+
+
+        #queston 15: duree depuis 1900
+#fct 3 param de date 
+#calcul moins date de 1900 
+
+
+def nbre_sec_depuis_1900(a,m,j):
+    an = a - 1900
+    mois = m - 1
+    jour = j - 1
+
+    an = an * secan
+    mois = mois * secm
+    jour = jour * secj
+
+    result = an + mois + jour
+    return result
+
+
+#print(nbre_sec_depuis_1900(1900,2,1))
+
+
+
+
+
+
+
+        # Question 16 et 17 du coup en fait : determiner la durée entre date d'aujourd'hui et notre date d'anniversaire en utilisant datetime
+#fct avec jour anniv  en parametre (3 variables)
+# importe datetime 
+# attribue date d'auji a 3 variable pour chaque unité 
+#soustrait date d'aujourd'hui a date passée en parametre puis multiplie chaque unité par son nombre de secondes 
+#additionner le tout pour avoir le resultat, return le result
+
+def agesec(aj,am,aa):
+    from datetime import date
+
+    today = date.today()
+    a = today.year
+    m = today.month
+    j = today.day
+
+    a= int(a)
+    m = int(m)
+    j = int(j)
+
+    an = a - aa
+    mois = m - am
+    jour = j - aj
+
+    an = an * secan
+    mois = mois * secm
+    jour = jour*secj
+
+    result = an +mois + jour
+    return result
+
+#print(agesec(21,12,2019))
+
+
+
+
+
+        #Question 18  on utilise la foction help pour obtenir des infos su la fonction undefined
+
+from math import *
+def undefined(x):
+    c = []      #je rajout une liste vide pour pouvoir y stocker des resultats pour voir ce que fait la fonction
+    while x < 10**9: # je fais varié la valeur de x pour voir comment evolue le resultat de la fonction et voir ce qu'elle fait en réalité
+        a = log10(x)+ 1
+        b = floor(a)
+        c.append(b) #j'ajoute b a la liste vide pour voir tous les resultats d'un coup 
+        x = x * 10
+    return c    #je retourne laliste pour avoir acces a tous les resultats 
+
+#help(log10)  la fonction renvois le logarithme 10 du nombre passé en paramètre
+
+#print(undefined(1))
+#apres quelques essais on se rend compte que la fonction nous renvois le nombre de chiffre du parametre donc 1 pour tout chiffre inférieur a 10 , 2 pour < 100 ,5 pour <100000 etc..
+
+
+
+
+
+            #Question 20:  on veut une fonction qui nous renvois le premier chiffre du nombre passé en parametre
+#fct 1 parametre 
+#log10+1 du nombre
+#divise le nombre par resultat du log10+1 ** 10
+# floor du résultat pour obtenir un entier  
+# return le result 
+
+
+def premchiffre(x):
+    a = log10(x)
+    b = floor(a)
+    c = 10**b
+    d = x / c
+    result = floor(d)
+    return result
+
+
+#print(premchiffre(2018))
+#print(premchiffre(345678765432345678))
+
+
+
+
+
+        #Question 21: on veut un predicat qui peremt de dire si 1 nombre entré en parametre est divisible par un autre nombre lui aussi entré en parametre
+#fct à 2 param 
+#condition 1er param % 2eme param == 0 return true
+# si pas true alors false
+#return result 
+#
+#
+#
+
+def est_divisible(x,y):
+    result = False
+
+    if x % y == 0:
+        result = True
+
+    return result
+
+#print(est_divisible(4,2))
+#print(est_divisible(2,4))
+#print(est_divisible(428,2))
+
+
+
+
+
+        #Question 22: on veut un prédicat qui permet de dire si une année est bissextile ou non (divisible par 4 et pas par 100  ou alors divisible par 400)
+# on utilise la fonction precedente est_divisible  3 fois pour savoir si par 4 et pas par 100 ou alors par 400
+# dire if la fonction c'est comme dire if la fonction == True donc on a pas besoin de le mettre et if nor la fonction c'est comme dire if la fonction == False donc pareil pas besoin de le mettre 
+
+
+def est_bissextile(x):
+    result = False
+    if (est_divisible(x,4) and not est_divisible(x,100)) or est_divisible(x,400):
+        result = True
+    return result
+
+
+
+#print(est_bissextile(2012))
+#print(est_bissextile(2008))
+#print(est_bissextile(1547))
+
+
+
+
+
+
+        #Question 23: o nveut une fonction qui prend 2 parametre un mois et une année et qui renvoit le nombre de jour de ce mpis dans cette année
+
+#fct a 2 param
+#12 variables une pr chaque mois et on fixe nb de jours de ces mois et met28 a fevrier
+#pour fevrier if est_bissextile alors change fevrier to 29
+# 
+
+def nbre_jours(m,a):
+    mois = str(m)
+    if m == 1 or m == 3 or m == 5 or m == 7 or m == 8 or m == 10 or m == 12:
+        result = 31
+    elif m == 4 or m == 6 or m ==9 or m == 11:
+        result = 30
+    elif m == 2 and est_bissextile(a):
+        result = 29
+    elif m == 2 and not est_bissextile(a):
+        result = 28
+    else:
+        result = 'ouch il y a un ptit bug'
+    return result
+
+#print(nbre_jours(1,2000))
+#print(nbre_jours(2,2000))
+#print(nbre_jours(2,2001))
+#print(nbre_jours(11,2078))
+
+
+
+
+        #Question 24 on veut en une fois avoir tous les resultats de la fonction precedente epour les années 2017 et 2018
+
+# boucle while 
+# fixe mois a 1 et le fait plus 1a chaque itération 
+# 
+#
+#
+
+
+def anneecplt(a):
+    m = 1
+    result = []
+    while m < 13:
+        nb = nbre_jours(m,a)
+        result.append(nb)
+
+        m += 1
+
+    nb22016 = nbre_jours(2,2016)
+    result.append(nb22016)
+    return result
+
+#print(anneecplt(2017))
+
+
+
+
+
+        #Question 25: veut fonction qui renvoit true si date passée en parametre est valide et false sinon
+
+# fct 3 param
+# chaque valeur de chaque param doit etre compris entre les valeurs normales 
+# pour mois chaque valeur entre 1 et nbres_jours(mois param,a param)
+# if mois >0<13 et jours >0<=nbrejours(mois param, annee param) result = true 
+# return result 
+#
+
+
+
+def est_date_valide(j,m,a):
+    result = False
+    a2 = floor(a)
+    if (j > 0 and j <= nbre_jours(m,a)) and (m > 0 and m < 13) and (a == a2):
+        result = True
+
+    return result
+
+#print(est_date_valide(31,1,2019))
+#print(est_date_valide(32,1,2019))
+
+#print(est_date_valide(30,1,2019))
+#print(est_date_valide(30,2,2019))
+
+#print(est_date_valide(30,1,2019))
+#print(est_date_valide(30,1,2019.567))
+
+
+
+
+
+
+
+
+        #Question 26: on veut appliquer la formule pour obtenir le bon jour de la semaine
+
+#  (k+q+cd+M+j+2+5*ab) % 7
+
+#ab = 20
+#cd = 19
+#k = cd // 4
+#q = ab // 4
+#M = 2
+#j = 25
+
+#res = (k+q+cd+M+j+2+5*ab) % 7
+#print(res)
+
+
+
+
+
+        #Question 27: on veut une fonction avec 2 params qui ajuste la valeur du mois si l'année est bissextile
+
+# fct2 params
+#entrer les mois a la main
+#creer var resultat en fonction du mois entré
+# si m = 1 ou 2 alors le resultat passe de 4 a 3  et de 0 a 6
+#
+
+
+
+def corrige_mois(m,a):
+    if m == 1 :
+        res = 4
+        if est_bissextile(a):
+            res = 3
+            
+    elif m == 2 :
+        res = 0
+        if est_bissextile(a):
+            res = 6
+            
+    elif m == 3 :
+        res = 0
+        
+    elif m == 4 :
+        res = 3
+        
+    elif m == 5 :
+        res = 5
+        
+    elif m == 6 :
+        res = 1
+
+    elif m == 7 :
+        res = 3
+
+    elif m == 8 :
+        res = 6
+        
+    elif m == 9 :
+        res = 2
+        
+    elif m == 10 :
+        res = 4
+        
+    elif m == 11:
+        res = 0
+
+    elif m == 12 :
+        res = 2
+
+    else:
+        res = "ouch il y a un ptit pb "
+    return res
+
+#print(corrige_mois(9,2137))
+
+
+
+
+
+        #question 28   veut fct 3 paramaetre qui prend une date et si valide rend le numero du jour dans la semaine de cette date
+
+
+#fct 3 param 
+#dire si date pas valide
+# si date valide applique formule pour numéro 
+#   donc faut 2 premier chiffre de l'année (ab) et les 2 derniers chiffres (cd)
+# faire division entiere par 4 de ab et cd  pour obtenir partie entiere du quart (q) et (k)
+# utiliser fonction precedente pour valeur corrigée du mois (M)
+# j est le jour dans le mois 
+# formule est  (k+q+cd+M+j+2+5*ab) % 7
+#
+#
+
+
+def num_jour(j,m,a):
+    result = "Ce n'est pas une date valide apparement"
+
+    if est_date_valide(j,m,a):
+        ab = log10(a)+1
+        ab = floor(ab)
+        ab = ab-2
+        cd = a % 10**ab  # on fait le cd ici car c'est la valeur de ab a cet instant dont on a besoin, a l'étape d'apres elle ne sera plus bonne pour notre calcul
+        ab = a // (10**ab)
+        q = ab // 4
+        k = cd // 4
+        j = j
+
+        M = corrige_mois(m,a)
+       
+
+        res = (k+q+cd+M+j+2+5*ab) % 7
+    return res
+
+#print(num_jour(21,12,2019))
+
+
+
+
+
+        # Question 29   on veut un fct a 3 param qui s'ils constituent une date valide renvois le jour en lettre
+#fct 3 param
+# si date valide 
+#num jour 
+# si num jour == 0  res = dimanche  , si ==1 res = lundi etc...
+#
+
+
+def nom_jour(j,m,a):
+    res = "ce n'est pas une date valide"
+
+    if est_date_valide(j,m,a):
+        if num_jour(j,m,a) == 0:
+            res = "dimanche"
+        if num_jour(j,m,a) == 1:
+            res = "lundi"
+        if num_jour(j,m,a) == 2:
+            res = "mardi"
+        if num_jour(j,m,a) == 3:
+            res = "mercredi"
+        if num_jour(j,m,a) == 4:
+            res = "jeudi"
+        if num_jour(j,m,a) == 5:
+            res = "vendredi"
+        if num_jour(j,m,a) == 6:
+            res = "samedi"
+
+    return res
+
+#print(nom_jour(27,12,2019))
+
+
+
+        #Question 30  veut fct qui demande d'entrer uen date en 3 entiers et qui renvois erreur si mauvaise date et si date bonne renvoitle jour de cette date
+
+
+#fct 3 param 
+# res = mess erreur
+# demandde d'entrer 3 entiers 
+# if date valide 
+# recupere le nom du jour de cette date avec fct nom_date 
+#return res
+#
+
+
+def demande_date():
+    res = " ouch apparement ce n'est pas une date valide "
+    a = input("entrez une année: ")
+    m= input("entrez le nulméro du mois: ")
+    j = input("entrez le numéro du jour: ")
+
+    a= int(a)
+    m = int(m)
+    j = int(j)
+
+    if est_date_valide(j,m,a):
+        res = nom_jour(j,m,a)
+
+    return res
+
+
+
+#print(demande_date())
+
+
+
+
+        #Question 31: on veut sct qui prend un entier entre 1 et 9 et renvoit l'equivalent en ch romain
+
+
+# fct 1 param 
+# renvois str
+# 
+#
+
+
+def unitesDecimales(x):
+    #x = input("entrez un nombre compris entre 1 et 9: ")
+    x = int(x)  #car input renvoit toujours un str donc faut le convertir pour pouvoir utilise < ou >
+    
+    res = "ce n'est pas un nombre valide"
+
+    if x > 0 and x < 10:
+        if x < 5:
+            res = "I" * x   # on imprime x fois I puisque uniquement la regle de additivité pour l'instnt 
+        elif x < 10:
+            res = "V" + ("I" * (x-5)) # on imprime un V et on soustrait 5 a x(car c'est le V ) et on imprime I fois le reste 
+    return res
+
+#print(unitesDecimales())
+
+
+
+        #Question 32: on veut une fonction qui ressemble a precedente mais prend 2 params qui sont lettres a utiliser 
+
+
+# fct 3 params qui sont le nombre et les lettres utilisées 
+#  si x entre 1 et 9 alors lettres sont I et V
+# si x entre 10 et 50 alors X et L  
+# si entre 100 et 500 alors C et D 
+# Si res > 500 ET % 100 == 0 alors x/100 fois C 
+# Si res % 100 == 0 
+#
+        
+def unChiffreDecimal(x,a,b):
+    res = "apparement il y a une petite erreur quelque part"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #Question 38   on veut fonction qui verifie que dans str il n'y a que ACGT et aucun autre caract
+    #fct 1 param 
+    #res = True
+    # if i != "A" or not i == "C" or not i == "G" or not i == "T" alors res = False
+    #return res
+
+
+def estADN(ch):
+    result = True
+    for i in ch:
+         if i != "A" and not i == "C" and not i == "G" and i != "T":
+            result = False
+    return result
+
+#test = ""
+#print(estADN(test))        pk elle renvoit True avec une chaine vide ????
+
+
+
+
+
+
+        #Question 39   on veut fct 1 param qui change les T en U
+#if est seq adn 
+# cree copie seq ou ajoute chaque caract 
+# si caract == "T" alors res = chaine + "U"
+# 
+#
+
+
+def TtoU(ch):
+    res = ""
+    if estADN(ch):
+        for i in ch:
+            if i == "T":
+                res = res + "U"
+            else:
+                res = res + i
+    return res
+
+
+#test = "TACGTGCAGAGCATAGACATTGACAGCATACGACATTGCAGCATACGACATACACT" 
+#print(TtoU(test))
+
+
+
+
+
+
+
+
+
+
+            #Question 40  on veut fct 1 par qui echange T avec U et G  avec C et renvois chaine vide si le param est pas "A" "T""C""G"
+# res = ""
+# for i in ch 
+# si i == "A" res == res + "T"  etc pour les 3 autres possibilités 
+# return res 
+#
+#
+
+
+def baseComplementaire(ch):
+    res = ""
+    for i in ch:
+        if i == "A":
+            res = res + "T"
+        elif i == "T":
+            res = res + "A"
+        elif i == "C":
+            res = res + "G"
+        elif i == "G":
+            res = res + "C"
+        else:
+            res = ""
+            return res
+    
+
+    return res
+
+#test = "U"
+#print(baseComplementaire(test))
+
+
+
+
+
+        #Question 41 on veut fct 1 param qui renoit complément inversé
+
+# foction pour verifier que bien une sequence
+# fonction pour obtenir complmement de la sequence (a devienne T et C deviennent G)
+# cree copie et boucle for avec pour i  res = i + res
+# return res
+#
+
+
+def sequenceComplementaireInversee(ch):
+    res = ""
+
+    if estADN(ch):
+        x = baseComplementaire(ch)
+
+        for i in x:
+            res = i + res
+    return res
+
+#test = "ACTG"
+#print(sequenceComplementaireInversee(test))
+
+
+
+
+
+        #Question 42  on veut fct 2 param prend cordon et chaine et fct renvoit le nombre de fois que cordon apparait dans la chaine
+
+# res = 0
+# cod =str(cor)
+# i = 0
+# 
+# while i < len(ch): 
+# if ch[i] == cod[0]:
+# if ch[i+1] == cor[1]:
+# if ch[i+2] == cor[2]:  alors res += 1
+# else i += 3
+#
+
+
+def nombreOccurenceCodon(cod,ch):
+    res =  0
+    cod = str(cod)
+    ch = str(ch)
+    c = 0
+
+    while c < len(ch):
+        if ch[c] == cod[0]:     #on regarde si lettre correspond a la 1ere codon si oui onregarde si ccelle d'apres correspond a 2eme et si oui si celle d'apres correspond a 3eme
+            if ch[c+1] == cod[1]:
+                if ch[c+2] == cod[2]:   
+                    res += 1    #si les 3 correspondent on ajoute 1 au compteur et on saute 3 carat pour voir si la prochaine serie de 3 correspond 
+                    c += 3
+                else:
+                    c += 3      #si a une seule comparaison ca ne colle pas on passe directe a +3 pour voir si codon suivant correspond
+            else:
+                c += 3
+        else:
+            c += 3
+    return res
+
+#testch = "AGACGAGACGGCACGAGAAGA"
+#testcod = "AGA"
+
+#print(nombreOccurenceCodon(testcod,testch))
+
+
+
+
+
+        # Question 43   on veut fct qui demande d'entrer une hseq ADN et un codon , si seq fausse renvoit mess erreur sivalide renvoit seq complementaire inversee et seq ARN , et aussi nb occurence codon
+
+
+# input seq adn et input codon 
+# res = "apparement ce n'est pas uen sequence valide " 
+# transcrire en ARN (T deviennent des U)
+# faire complementaire inversee de ch param ()
+# compter nb de fois codon dans seq ARN 
+# return res
+#
+
+def prog_ADN():
+    ch = input("Veuillez entrer une séquence ADN: ")
+    cod = input("Veuillez entrer un codon: ")
+
+    res = "ouch apparement la sequence ADN n'est pas valide"
+    compl = ""
+    
+
+    if estADN(ch):
+
+        compl = sequenceComplementaireInversee(ch)
+        print("séquence complémentaire-inversée : ",compl)
+
+        ARN = TtoU(ch)
+        print("séquence ARN : ", ARN)
+
+        nbcod = nombreOccurenceCodon(cod,ARN)
+        print("Le codon apparait ",nbcod," fois dans la séquence ARN")
+
+    else:
+        print(res)
+    return
+
+#prog_ADN()
+
+
+
+
+        #Question 44  si compteur += 1 qd ( et -1 qd ) alors expression bien parenthésée si compteur == 0 a la fin
+
+
+
+
+
+        #Question 45: veut fct 1 param qui est chaine,  si autant de ( que de ) alors true et faut que avant cette pos il y ait >= de ( que de )
+
+
+# fct 1 param
+# compteur = 0 
+# for i in ch 
+# if i =="("  alors += 1 
+# elif i == ")" alors = -1
+# if compteur < 0 return False
+#
+#
+#
+
+def bienParenthesee(ch):
+    compteur = 0
+    res = ""
+    for i in ch:
+        if i == "(":
+            compteur += 1
+        elif i == ")":
+            compteur = compteur - 1
+        if compteur < 0:    # met aussi if ici car si a un moment compteur < 0 c'est que parenthese fermante sans parenthese ouvrante avant et c'est pas corrigeable donc forcement chaine par bien parenthesee
+            
+            res = False
+            return res
+    if compteur == 0:
+        res = True
+    
+    elif compteur != 0:
+        res = False
+    else:
+        res = "oups apparement il y a un petit bug soucis quelque part "
+
+    return res
+
+
+#test = "())()()())"
+#print(bienParenthesee(test))
+
+
+
+
+
+        #Question 46  veut qui renvoit nombre facteur d'une expression bien parenthesée passée en param
+
+# compteur = 0
+# nbfact = -1
+# if bienparenthesee
+# for i in ch: 
+# if i == "(" alors compteur +=1
+# elif i == ")"alors compteur = compteur -1
+# if compteur == 0 alors nbfact += 1
+# return nbfact
+
+
+
+def nbreFacteurs(ch):
+    compteur = 0   #compteur c'est pour bien voir si c'est ( ou ) 
+    nbfact = 0 # le nombre de facteurs , a chaque fois que compteur retombe a 0 on fait ici + 1
+    if bienParenthesee(ch):
+        for i in ch:
+            if i == "(":
+                compteur += 1
+            elif i == ")":
+                compteur = compteur - 1
+           
+
+            if compteur == 0 and (i == "(" or i == ")"):  #faut que le caract soit une parenthese sinon compteur reste a 0 et nbfacteur a + 1 a chaque fois 
+                nbfact += 1
+    else:
+        nbfact = "oups apparement ce n'est pas une expression bien parenthésée"  # si jamais l'expression n'est paas bien parenthesee
+    return nbfact
+
+
+#test = "    (() ) ()()() (() ()()()()()() )"
+#print(nbreFacteurs(test))
+
+        
+
+
+
+
+
+        #Question 47 on veut fct qui affiche * entre chaque facteur d'une expression
+
+# compteur = 0
+# if bienParenthesee
+# for i in ch
+#   if i == ( alors compteur += 1
+#   elif == ) alors compteur = compteur -1
+#   res = res + i
+#   if compteur == 0:
+#       res = res + "*"
+#return res
+
+
+
+def afficheFacteurs(ch):
+    compteur = 0
+    res = ""
+    i = 0
+    if bienParenthesee(ch):
+        while i < len(ch):
+            if ch[i] == "(":
+                compteur += 1
+            elif ch[i] == ")":
+                compteur = compteur - 1
+            if i == 0:
+                res = res + ch[i]
+                
+            elif compteur == 0 and ch[i -1 ] == ")":
+                res = res + ch[i] + "*"
+            else:
+                res = res + ch[i]
+                
+
+            i += 1
+            
+    return res
+
+
+#test = ' ( ( ) ) ( ) ( ( ) ( ) )'
+#print(afficheFacteurs())
+
+
+
+
+
+
+
+       
+        
+
+
+
+
+
+        
+
