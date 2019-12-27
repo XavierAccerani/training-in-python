@@ -998,6 +998,58 @@ def afficheFacteurs(ch):
 
 
 
+
+
+
+
+
+        #Question 48 :  veut programme choisit nb entre 1 et 100, demande a utilisateur de choisir nb si == alors c'est gagne sinon dit si + ou -  et droit qu'a 7 essais  , a fin affiche score = è - essais , si trouve pas dc'est perdu
+
+# fct 0 param
+#  rep =randint(1,100)
+# res = "c'est perdu "
+# while i < 8
+# essai = input entre 1 et 100
+# if essai == rep alors  res = "c'est gagné"  score = 7-i score2= "votre score est de ",score  return 
+# elif essai < rep alors "moins"   
+# elif essai > rep alors "plus"
+# 
+# return res
+
+from random import randint
+
+def jeudevine():
+    rep = randint(1,100)
+    res = "c'est perdu"
+    i = 1
+    while i < 8:
+        essai = input("entrez un nombre entre 1 et 100: ")
+        essai = int(essai)
+
+
+        if essai == rep:
+            res = "c'est gagné!"
+            score = 7-i
+            
+            print(res)
+            print(score)
+            return
+        elif essai < rep:
+            print("plus")
+        elif essai > rep:
+            print("moins")
+        i += 1
+        if i == 8 and not essai == rep:
+            print("c'est perdu")
+            return
+
+#jeudevine()
+
+
+
+
+
+
        
         
 
