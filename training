@@ -1050,6 +1050,46 @@ def jeudevine():
 
 
 
+        #Question 49  on veut meme fonction mais 3 param: bornes du nb mystere et nb essais
+#fcgt 3 params 
+# res = "c'est perdu"
+#i = 1
+#rep = randint(x,y)
+# while i < nb+1
+#input (entrez un nb entre ,x, et ,y)
+        
+
+
+def jeudevineparam(nbessais,x,y):
+    rep = randint(x,y)
+    res = "c'est perdu"
+    i = 1
+    while i < (nbessais+1) :
+        print("entrez un nombre entre ",x ," et ",y,": ")
+        essai = input()
+        essai = int(essai)
+
+
+        if essai == rep:
+            res = "c'est gagné!"
+            score = nbessais-i
+            
+            print(res)
+            print(score)
+            return
+        elif essai < rep:
+            print("plus")
+        elif essai > rep:
+            print("moins")
+        i += 1
+        if i == (nbessais+1) and not essai == rep:
+            print("c'est perdu")
+            return
+
+#jeudevineparam(10,499,500)
+
+
+
        
         
 
