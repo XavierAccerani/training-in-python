@@ -1090,6 +1090,44 @@ def jeudevineparam(nbessais,x,y):
 
 
 
+
+        #Question 50  on veut fct ou ordinateur choisit nb entre a et b , et utilisateur dit si + ou - ou = jusqu'a ce que l'ordinateur trouve la bonne réponse
+
+# while rep != "=":
+# essai = (a+b)/2
+# essai = floor(essai)
+# print(essai ) 
+#rep = input("c'est +,- ou = ?") 
+# if rep == "+": a = essai
+# elif rep == "-" : b = essai:
+#
+#print ("tu penses au nombre ",essai )
+
+
+def cherchenb(a,b):
+    rep = ""
+
+    while rep != "=":
+        essai = (a+b)/2
+        essai = floor(essai)
+        print(essai)
+
+        rep = input("c'est + , - , ou = ?")
+        
+        if rep == "+":
+            a = essai + 1
+        elif rep == "-":
+            b = essai - 1
+
+    if essai >= 10:
+        print("tu penses au nombre ",essai)
+    elif essai < 10:
+        print("tu pense au chiffre ", essai)
+
+    return
+
+
+#cherchenb(1,100000000)
        
         
 
