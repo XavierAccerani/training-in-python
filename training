@@ -1133,6 +1133,50 @@ def cherchenb(a,b):
 
 
 
+from turtle import *
+
+        #Question 51 veut un carré et que tortue soit meme etat que au départ donc meme endroit et meme direction
+
+# fct 1 param 
+# for i in range(1,5)
+# forward(long)
+# right(90)
+
+
+def carre(long):
+    for i in range(1,5):
+        forward(long)
+        right(90)
+    return
+
+#print(carre(150))
+
+
+
+        #Questuon 52  veut 10 carré espacés de 5
+
+# boucle avec 10 iteration 
+# chaque iteration on fait carre 
+# penup forward long + 5
+
+
+
+def carre10(long):
+    i = 0
+
+    while i < 10:
+        carre(long)
+        penup()
+        forward(long+5)
+        pendown()
+
+        i += 1
+
+    return
+
+#print(carre10(50))
+
+
 
 
         
