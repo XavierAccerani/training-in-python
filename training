@@ -1279,6 +1279,54 @@ def polygoneRegulierConvexe(n,l):
 
 
 
+        #Question57 veut fonction qui dessine polygone avec n cote longeur l et qui a un pas de k entre les sommet
+
+# fct 3 params
+# divise 360 par n 
+# angle = 360/n*k
+#
+#
+
+def polygoneEtoile(n,l,k):
+    i = 0
+    while i < n:
+        forward(l)
+        left(360/n*k)
+        i += 1
+    return
+
+#print(polygoneEtoile(10,30,3))
+
+
+
+
+
+        #Question 58  veut dessiner 4 etoiles qui ont 5,7,8 et 9 bras
+
+
+#penup()
+#goto(-100,100)
+#pendown()
+#polygoneEtoile(5,40,2)
+
+#penup()
+#goto(100,100)
+#pendown()
+#polygoneEtoile(7,40,3)
+
+#penup()
+#goto(-100,-100)
+#pendown()
+#polygoneEtoile(8,40,3)
+
+#penup()
+#goto(100,-100)
+#pendown()
+#polygoneEtoile(9,40,4)
+
+
+
+
 
 
         
