@@ -1179,5 +1179,107 @@ def carre10(long):
 
 
 
+
+
+
+        #Queston 53 on veut fonction qui dessine 50 carrés dont longeur coté augmente de 10 a chaque itération
+
+# i = 0
+#long = 10
+# while i < 50:
+# carre(long)
+# i += 1
+# long += 10
+#
+
+
+
+def carre50():
+    i = 0
+    long = 10
+    while i < 50:
+        carre(long)
+
+        i += 1
+        long += 10
+    return
+#print(carre50())
+
+
+
+
+
+
+        #Question 54
+
+    # pour un polygone convexe a n cotes il suffit de faire 360/ n
+
+
+
+
+
+        #Question 55 veut fct 2 param qui dessine polygon n cote longueur l et tortue reprend etat initial a la fin
+
+# fct 2 param 
+# i = 0
+# while i < n
+# forward(l)
+# left(360/n)
+# return
+#
+#
+
+
+
+def polygoneRegulierConvexe(n,l):
+    i = 0
+    while i < n:
+        forward(l)
+        left(360/n)
+        i += 1
+    return
+
+#print(polygoneRegulierConvexe(7,40))
+
+
+
+
+        #Question 56  veut fonction qui dessine polygon 4 cote , 5,6,7 enutilisant fct precedente
+
+# penup() goto(-50,50)
+# pendown()
+# polygonRegulierConvexe(4,50)
+# et refaire manip en changeant nb de coté et posiion dans goto
+# return
+
+
+
+
+#penup()
+#goto(-50,50)
+#pendown()
+#polygoneRegulierConvexe(4,100/4)
+
+#penup()
+#goto(50,50)
+#pendown()
+#polygoneRegulierConvexe(5,100/5)
+
+#penup()
+#goto(-50,-50)
+#pendown()
+#polygoneRegulierConvexe(6,100/6)
+
+#penup()
+#goto(50,-50)
+#pendown()
+#polygoneRegulierConvexe(7,100/7)
+
+
+
+
+
+
+
         
 
