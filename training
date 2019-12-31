@@ -1329,5 +1329,117 @@ def polygoneEtoile(n,l,k):
 
 
 
+
+        #Question 59: veut predicat qui renvoit True si position tortue est > a longueur du carré centré sur l'origine de la tortue
+
+
+# fct 1 param
+# result = False 
+# if xcor ou ycor > longueur /2 result = True
+#
+#
+
+def tortueSortie(long):
+    result = False
+    posx = xcor()
+    posy = ycor()
+    posx = abs(posx)
+    posy = abs(posy)
+    if posx > long/2 or posy > long/2 :
+        result = True
+
+    return result
+
+
+
+
+
+        #Question 60 on veut terster la fct en dessinant un carré et en placant la tortue a different endroit
+# dessiner carré centré sur origine (goto-50 50)
+# placer tortue a un endroit (goto -49 150)
+# utiliser predicat pour voir si elle est dedans 
+# deplacer tortue
+# predicat 
+# repeter deplacement predicat
+
+
+#penup()
+#goto(-50,50)
+#pendown()
+#carre(100)
+#penup()
+#goto(-30,25)
+#pendown()
+#print(tortueSortie(100))
+#penup()
+#goto(30,-25)
+#pendown()
+#print(tortueSortie(100))
+#penup()
+#goto(-60,25)
+#pendown()
+#print(tortueSortie(100))
+#penup()
+#goto(60,25)
+#pendown()
+#print(tortueSortie(100))
+#penup()
+#goto(-30,80)
+#pendown()
+#print(tortueSortie(100))
+#penup()
+#goto(-30,-80)
+#pendown()
+#print(tortueSortie(100))
+
+
+
+
+        #Question 61 veut fct qui represente mvt brownien ou particule choisit un angle gauche entre 0 et 359 et avance entre 10 et 30
+
+
+# from random import randint 
+# dessine carré coté l
+# penup()
+# tortue goto(0,0)
+# pendown
+# result = false 
+# while result == False:
+# left(randint(0,359))
+# forward(randint(10,30))
+# if tortueSortie(): result = True
+
+
+
+from random import randint 
+def mouvementBrownien(l):
+    penup()
+    goto(-l/2,-l/2)
+    pendown()
+    carre(l)
+
+    penup()
+    goto(0,0)
+    pendown()
+
+    result = False 
+
+    while result == False:
+        speed(50)  # pour accelerer ce qui se passe ( marche pour angle et pur avancer)
+
+        left(randint(0,359))
+        forward(randint(10,30))
+
+        if tortueSortie(l):
+            result = True
+
+    return
+
+#print(mouvementBrownien(400))
+
+
+
+
+
         
 
